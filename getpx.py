@@ -1,8 +1,9 @@
-import Image
+import PIL as Pillow
+from PIL import Image
 import sys
 
 labels = []
-f = open("trainLabels.csv")
+f = open("beetrainLabels.csv")
 for line in f:
 	labels.append( '"' + line.rstrip().split(',')[1] + '"' )
 f.close()
