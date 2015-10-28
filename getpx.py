@@ -1,6 +1,7 @@
 import PIL as Pillow
 from PIL import Image
 import sys
+import os
 
 labels = []
 f = open("beetrainLabels.csv")
@@ -18,18 +19,22 @@ print ",".join(arr)
 
 
 for x in range(1, 50000+1):
+        if os.path.isfile('beetrain/' + str(x) + '.jpg'):
+        
+                #im = Image.open('beetrain/' + str(x) + '.jpg').convert('LA')
+                im = Image.open('beetrain/' + str(x) + '.jpg')
 
-	#im = Image.open('train/' + str(x) + '.png').convert('LA')
-	im = Image.open('train/' + str(x) + '.png')
+                #im.show()
+                
+                arr = []
+                for i in range(0, 200):
+                        for j in range(0, 200):
+                                tp = im.getpixel((i,j))
+                                arr.append( str(tp[0]) )
+                                arr.append( str(tp[1]) )
+                                arr.append( str(tp[2]) )
+                                
+                print ",".join(arr) + "," + labels[x]
 
-	#im.show()
-	
-	arr = []
-	for i in range(0, 32):
-		for j in range(0, 32):
-			tp = im.getpixel((i,j))
-			arr.append( str(tp[0]) )
-			arr.append( str(tp[1]) )
-			arr.append( str(tp[2]) )
-			
-	print ",".join(arr) + "," + labels[x]
+	else:
+                pass
