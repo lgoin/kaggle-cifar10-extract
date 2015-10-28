@@ -10,7 +10,7 @@ for line in f:
 f.close()
 
 arr = []
-for i in range(0,32*32):
+for i in range(0,200*200):
 	for j in ['r','g','b']:
 		arr.append('"px' + j + str(i) + '"')
 arr.append('"class"')
